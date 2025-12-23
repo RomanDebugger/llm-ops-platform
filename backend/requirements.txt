@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+python-multipart
+sqlalchemy
+psycopg2-binary
+qdrant-client
+openai
+python-dotenv
