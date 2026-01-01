@@ -1,11 +1,13 @@
 from pathlib import Path
 
+
 def load_text(file_path: str) -> str:
     path = Path(file_path)
+
     if not path.exists():
-        raise FileNotFoundError
+        raise FileNotFoundError(f"File not found: {file_path}")
 
     if path.suffix.lower() == ".txt":
-        return path.read_text()
+        return path.read_text(encoding="utf-8")
 
-    raise ValueError("Unsupported file type")
+    raise ValueError(f"Unsupported file type: {path.suffix}")

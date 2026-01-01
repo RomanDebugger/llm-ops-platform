@@ -1,5 +1,5 @@
 from qdrant_client import QdrantClient
-from qdrant_client.models import PointStruct
+from qdrant_client.models import PointStruct, VectorParams, Distance
 import uuid
 
 client = QdrantClient(host="localhost", port=6333)
@@ -10,7 +10,10 @@ def index_embeddings(chunks, embeddings):
     if not client.collection_exists(COLLECTION_NAME):
         client.create_collection(
             collection_name=COLLECTION_NAME,
-            vectors_config={"size": len(embeddings[0]), "distance": "Cosine"}
+            vectors_config=VectorParams(
+                size=len(embeddings[0]),
+                distance=Distance.COSINE,
+            )
         )
 
     points = []

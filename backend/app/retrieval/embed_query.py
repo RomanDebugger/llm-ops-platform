@@ -1,5 +1,6 @@
-import random
+from typing import List
+from app.ingestion.embedder import _deterministic_vector
 
-def embed_query(question: str):
-    # TEMP stub — must match vector size used in ingestion
-    return [random.random() for _ in range(384)]
+
+def embed_query(question: str) -> List[float]:
+    return _deterministic_vector(question)
